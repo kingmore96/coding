@@ -11,6 +11,7 @@ public class Coding {
 
     /**
      * 把栈底的数据冒泡冒出来
+     *
      * @param stack
      * @return
      */
@@ -29,6 +30,7 @@ public class Coding {
 
     /**
      * 递归函数到最后一层时，栈已经空了，这个时候把3，2，1再依次压入就可以形成逆序
+     *
      * @param stack
      */
     public void reverse(Stack<Integer> stack) {
