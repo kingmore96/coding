@@ -53,12 +53,26 @@ public class Coding {
         NewPet newPet = new NewPet(pet, System.currentTimeMillis());
         if (pet instanceof Cat) {
             catQueue.add(newPet);
-        } else {
+        } else if (pet instanceof Dog) {
             dogQueue.add(newPet);
+        } else {
+            throw new RuntimeException("add error，不是猫也不是狗，不能传入");
         }
     }
 
     public Pet pollAll() {
+        if (isEmpty()) {
+            throw new RuntimeException("队列为空，无法弹出数据！");
+        }
+
+        if (isCatEmpty()) {
+            return dogQueue.poll().getPet();
+        }
+
+        if (isDogEmpty()) {
+            return catQueue.poll().getPet();
+        }
+
         NewPet catPeek = catQueue.peek();
         NewPet dogPeek = dogQueue.peek();
         if (catPeek.inQueueTime < dogPeek.inQueueTime) {
@@ -68,11 +82,17 @@ public class Coding {
         }
     }
 
-    public Pet pollDog(){
+    public Pet pollDog() {
+        if (isDogEmpty()) {
+            throw new RuntimeException("队列为空，无法弹出数据！");
+        }
         return dogQueue.poll().getPet();
     }
 
-    public Pet pollCat(){
+    public Pet pollCat() {
+        if (isCatEmpty()) {
+            throw new RuntimeException("队列为空，无法弹出数据！");
+        }
         return catQueue.poll().getPet();
     }
 
