@@ -18,9 +18,8 @@ package io.github.kingmore96.第一章.用栈来求解汉诺塔问题;
  * <p>
  * 用以下两种方法解决。
  * •方法一：递归的方法；
- * •方法二：非递归的方法，用栈来模拟汉诺塔的三个塔。
  */
-public class Coding {
+public class CodingForRecursive {
 
     /**
      * 汉诺塔解法
